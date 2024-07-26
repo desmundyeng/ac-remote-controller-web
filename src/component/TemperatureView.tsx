@@ -23,16 +23,6 @@ const TemperatureView: React.FC = () => {
         };
     }, []);
 
-    const onChangeTemperaturePoint = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = Number(e.target.value);
-        if (value >= 15 && value <= 30) {
-            setCurrentValue(value);
-            setErrorResponse('');
-        } else {
-            setErrorResponse('Value must be between 15 and 30');
-        }
-    };
-
     const handleSetPoint = async () => {
         try {
             const data = await api.setTemperaturePoint(currentValue);
@@ -50,11 +40,21 @@ const TemperatureView: React.FC = () => {
         <input
             type="number"
             value={currentValue}
-            onChange={onChangeTemperaturePoint}
             min={15}
             max={30}
             step={1}
+            disabled
         />
+        <button
+            onClick={() => setCurrentValue(prev => Math.max(prev - 1, TemperaturePoint.Min))}
+        >
+            -
+        </button>
+        <button
+            onClick={() => setCurrentValue(prev => Math.min(prev + 1, TemperaturePoint.Max))}
+        >
+            +
+        </button>
         <button onClick={() => {
             setIsLoading(true);
             handleSetPoint().then(() => {
