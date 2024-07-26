@@ -7,6 +7,12 @@ Web-based AC Remote Control App
 README.md is currently a work in progress. Check back later for updates!
 
 ### Demo
+
+
+https://github.com/user-attachments/assets/51daa541-0a42-4efd-85dd-b516b240a67d
+
+
+
 This demo uses [cors-anywhere](https://github.com/Rob--W/cors-anywhere) to route requests to API.  
 First, request temporary access to the demo server at https://cors-anywhere.herokuapp.com/corsdemo  
 Then access this demo at https://ac-remote-controller-web.vercel.app/
